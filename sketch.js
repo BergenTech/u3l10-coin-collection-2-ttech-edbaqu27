@@ -4,8 +4,10 @@ let coinX, coinY;
 let obstacleX, obstacleY
 let obstacleSpeed = 2.5
 let score = 0;
+let hits = 0
 let gameOver = false;
 
+let collidedObstacle = false
 let collected = false
 
 function setup() {
@@ -145,8 +147,19 @@ function checkCollisions() {
   //   - Check for game over (hits >= 3)
   //   - Reset positions
 
-  if (dist(obstacleX, obstacleY, playerX, playerY) < 20) {
+  if (dist(obstacleX, obstacleY, playerX, playerY) < 20 && !collidedObstacle) {
+    hits += 1
 
+    obstacleX = 20
+    obstacleY = random(20, height-20)
+
+    if (hits >= 3) {
+      collidedObstacle = true
+      print("game over!")
+      displayGameOver()
+      resetGame()
+      collidedObstacle = false
+    }
   }
 }
 
