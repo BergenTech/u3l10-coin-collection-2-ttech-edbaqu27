@@ -191,6 +191,7 @@ function displayGameOver() {
     text("GAME OVER!", 200, 150)
     text("Final Score: " + score, 200, 200)
     text("Press R to Restart", 200, 250)
+    textAlign(LEFT)
   }
 }
 
@@ -209,7 +210,7 @@ function resetGame() {
   score = 0
   hits = 0
   obstacleSpeed = 2.5
-  gameOver = false
+  // gameOver = false
   initializeGame()
 }
 
@@ -218,6 +219,12 @@ function keyPressed() {
   // HINT: Use key === 'r' || key === 'R'
   // Only works when game is over
 
+  if (gameOver) {
+    if (key === "r" || key === "R") {
+      gameOver = false
+      initializeGame()
+    }
+  }
 
   
 }
