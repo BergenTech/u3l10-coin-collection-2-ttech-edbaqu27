@@ -222,6 +222,7 @@ function keyPressed() {
   if (gameOver) {
     if (key === "r" || key === "R") {
       gameOver = false
+      resetGame()
       initializeGame()
     }
   }
