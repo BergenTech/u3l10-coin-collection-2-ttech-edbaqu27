@@ -148,18 +148,22 @@ function checkCollisions() {
   //   - Reset positions
 
   if (dist(obstacleX, obstacleY, playerX, playerY) < 20 && !collidedObstacle) {
+    print("collided")
+    collidedObstacle = true
     hits += 1
-
+    
+    
     obstacleX = 20
     obstacleY = random(20, height-20)
 
     if (hits >= 3) {
-      collidedObstacle = true
+      // collidedObstacle = true
       print("game over!")
       displayGameOver()
       resetGame()
-      collidedObstacle = false
+      // collidedObstacle = false
     }
+    collidedObstacle = false
   }
 }
 
@@ -167,7 +171,8 @@ function displayStats() {
   fill(0);
   textSize(16);
   text("Score: " + score, 10, 20);
-  text("Score: " + score, 10, 36);
+  text("Hits: " + hits, 110, 20);
+  text("Speed: " + obstacleSpeed, 210, 20);
   // TODO: Add display for hits and speed
 }
 
@@ -191,6 +196,9 @@ function resetGame() {
   // HINT: Reset score, hits, speed
   // Set gameOver to false
   // Call initializeGame()
+
+  score = 0
+  hits = 0
 }
 
 function keyPressed() {
