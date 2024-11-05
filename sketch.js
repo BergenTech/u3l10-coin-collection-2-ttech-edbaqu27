@@ -161,7 +161,7 @@ function checkCollisions() {
       // collidedObstacle = true
       print("game over!")
       displayGameOver()
-      resetGame()
+      // resetGame()
       // collidedObstacle = false
     }
     collidedObstacle = false
