@@ -157,6 +157,7 @@ function checkCollisions() {
     obstacleY = random(20, height-20)
 
     if (hits >= 3) {
+      gameOver = true
       // collidedObstacle = true
       print("game over!")
       displayGameOver()
@@ -174,7 +175,7 @@ function displayStats() {
   text("Hits: " + hits, 110, 20);
   text("Speed: " + obstacleSpeed, 210, 20);
   // TODO: Add display for hits and speed
-  
+
 }
 
 function displayGameOver() {
@@ -184,6 +185,13 @@ function displayGameOver() {
   //   - "Game Over" message
   //   - Final score
   //   - "Press R to Restart"
+
+  if (gameOver) {
+    textAlign(CENTER, CENTER)
+    text("GAME OVER!", 200, 150)
+    text("Final Score: " + score, 200, 200)
+    text("Press R to Restart", 200, 250)
+  }
 }
 
 function newCoin() {
@@ -200,12 +208,18 @@ function resetGame() {
 
   score = 0
   hits = 0
+  obstacleSpeed = 2.5
+  gameOver = false
+  initializeGame()
 }
 
 function keyPressed() {
   // TODO: Check for 'R' key to restart game
   // HINT: Use key === 'r' || key === 'R'
   // Only works when game is over
+
+
+  
 }
 
 // Helper function you might need
