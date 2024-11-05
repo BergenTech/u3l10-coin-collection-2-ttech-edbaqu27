@@ -174,6 +174,7 @@ function displayStats() {
   text("Hits: " + hits, 110, 20);
   text("Speed: " + obstacleSpeed, 210, 20);
   // TODO: Add display for hits and speed
+  
 }
 
 function displayGameOver() {
