@@ -6,6 +6,8 @@ let obstacleSpeed = 2.5
 let score = 0;
 let gameOver = false;
 
+let collected = false
+
 function setup() {
   createCanvas(400, 400);
   initializeGame();
@@ -123,6 +125,16 @@ function checkCoinCollection() {
   //   - Increase score
   //   - Create new coin
   //   - Increase obstacle speed slightly
+
+  if (dist(playerX, playerY, coinX, coinY) < 15) {
+    if (!collected) {
+      collected = true
+      score += 1
+      obstacleSpeed += 0.5
+      newCoin()
+      collected = false
+    }
+  }
 }
 
 function checkCollisions() {
@@ -132,6 +144,10 @@ function checkCollisions() {
   //   - Increase hits
   //   - Check for game over (hits >= 3)
   //   - Reset positions
+
+  if (dist(obstacleX, obstacleY, playerX, playerY) < 20) {
+
+  }
 }
 
 function displayStats() {
