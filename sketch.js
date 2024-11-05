@@ -24,8 +24,8 @@ function initializeGame() {
   newCoin();
   
   // Initialize obstacle position
-  obstacleX = 0;
-  obstacleY = random(20, height-20);
+  obstacleX = random(20, width-20);
+  obstacleY = 0;
 }
 
 function draw() {
@@ -108,15 +108,15 @@ function moveObstacle() {
   // HINT: Check if obstacleX > width
   // Reset to left side and new random Y position
 
-  obstacleX += obstacleSpeed
+  obstacleY += obstacleSpeed
 
-  if (obstacleX > width) {
+  if (obstacleY > height) {
     // reset obstacle
-    obstacleX = 0
+    obstacleY = 0
     // increment speed
     obstacleSpeed += 0.5
     // random height
-    obstacleY = random(20, height-20)
+    obstacleX = random(20, width-20)
   }
 }
 
@@ -153,8 +153,8 @@ function checkCollisions() {
     hits += 1
     
     
-    obstacleX = 20
-    obstacleY = random(20, height-20)
+    obstacleX = random(20, width-20)
+    obstacleY = 0
 
     if (hits >= 3) {
       gameOver = true
