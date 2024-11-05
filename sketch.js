@@ -1,7 +1,8 @@
 // Game variables 
 let playerX, playerY;
 let coinX, coinY;
-let obstacleX, obstacleY;
+let obstacleX, obstacleY
+let obstacleSpeed
 let score = 0;
 let gameOver = false;
 
@@ -65,18 +66,24 @@ function drawObstacle() {
 // Basic left/right movement provided
 function movePlayer() {
   if (keyIsDown(LEFT_ARROW)) {
-    if (playerX - 5 >= 0) {
+    if (playerX - 5 >= 10) {
       playerX -= 5;
     }
   }
   if (keyIsDown(RIGHT_ARROW)) {
-    playerX += 5;
+    if (playerX + 5 <= width-10) {
+      playerX += 5;
+    }
   }
   if (keyIsDown(UP_ARROW)) {
-    playerY -= 5
+    if (playerY - 5 >= 10) {
+      playerY -= 5
+    }
   }
   if (keyIsDown(DOWN_ARROW)) {
-    playerY += 5
+    if (playerY - 5 <= height - 20) {
+      playerY += 5
+    }
   }
   
   // TODO: Add up/down movement
@@ -95,6 +102,8 @@ function moveObstacle() {
   // TODO: Reset obstacle when it goes off screen
   // HINT: Check if obstacleX > width
   // Reset to left side and new random Y position
+
+
 }
 
 function checkCoinCollection() {
