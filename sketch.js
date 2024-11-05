@@ -2,7 +2,7 @@
 let playerX, playerY;
 let coinX, coinY;
 let obstacleX, obstacleY
-let obstacleSpeed
+let obstacleSpeed = 2.5
 let score = 0;
 let gameOver = false;
 
@@ -65,6 +65,7 @@ function drawObstacle() {
 
 // Basic left/right movement provided
 function movePlayer() {
+  // check bounds, if moving will exceed the frame
   if (keyIsDown(LEFT_ARROW)) {
     if (playerX - 5 >= 10) {
       playerX -= 5;
@@ -103,7 +104,16 @@ function moveObstacle() {
   // HINT: Check if obstacleX > width
   // Reset to left side and new random Y position
 
+  obstacleX += obstacleSpeed
 
+  if (obstacleX > width) {
+    // reset obstacle
+    obstacleX = 0
+    // increment speed
+    obstacleSpeed += 0.5
+    // random height
+    obstacleY = random(20, height-20)
+  }
 }
 
 function checkCoinCollection() {
@@ -128,6 +138,7 @@ function displayStats() {
   fill(0);
   textSize(16);
   text("Score: " + score, 10, 20);
+  text("Score: " + score, 10, 36);
   // TODO: Add display for hits and speed
 }
 
